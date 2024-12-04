@@ -6,7 +6,7 @@
             "type": "node",
             "request": "attach",
             "port": 9229,
-            "address": "localhost",
+            "address": "0.0.0.0",
             "restart": true,
             "localRoot": "${workspaceFolder}",
             "remoteRoot": "/srv/node/app",

@@ -1,23 +1,37 @@
 {
-    "name": "c-s-pr1-kulak",
-    "version": "1.0.0",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "docker-compose up --build -d"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "description": "",
-    "devDependencies": {
-        "@types/node": "22.5.5"
-    },
-    "dependencies": {
-        "@mgcrea/fastify-request-logger": "1.7.1",
-        "@mgcrea/pino-pretty-compact": "1.3.0",
-        "dotenv": "16.4.5",
-        "fastify": "4.28.1",
-        "pino-pretty": "11.2.2"
-    }
+  "name": "c-s-pr1-kulak",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "docker compose up --build -d",
+    "db:sync": "source .env && prisma db push",
+    "lint": "eslint ./ --fix",
+    "format": "prettier --write ./src",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "22.5.5",
+    "eslint": "9.13.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.2.1",
+    "neostandard": "0.11.6",
+    "prettier": "3.3.3"
+  },
+  "dependencies": {
+    "@mgcrea/fastify-request-logger": "1.7.1",
+    "@mgcrea/pino-pretty-compact": "1.3.0",
+    "@prisma/client": "5.20.0",
+    "dotenv": "16.4.5",
+    "fastify": "4.28.1",
+    "husky": "^9.1.7",
+    "mongodb": "6.9.0",
+    "pg": "8.13.1",
+    "pino-pretty": "11.2.2",
+    "prisma": "5.20.0"
+  }
 }

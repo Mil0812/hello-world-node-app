@@ -13,17 +13,22 @@ COPY package*.json ./
 # Install any dependencies (none in this case)
 RUN npm install
 
-# Copy the rest of the application
-COPY . .
-
-# Change the owner of the project files to the node user
-RUN chown -R node /srv/node/app
+COPY --chown=node:node . .
 
 # Switch to the node user
 USER node
 
+RUN if [ "$REBUILD_PRISMA_CLIENT" = "true" ]; then \
+    npm run db:sync; \
+    fi
+
+EXPOSE 3000
+
 # Expose the debugging port
 EXPOSE 9229
+
+# Set the NODE_ENV environment variable to development by default
+ENV NODE_ENV=development
 
 # Start the application
 CMD ["nodemon", "--inspect=0.0.0.0:9229", "server.js"]
